@@ -1,0 +1,78 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model SaludTotalWeb.Models.ViewModels.TurnoViewModel
+
+@{
+    ViewData["Title"] = "Solicitar Turno";
+}
+
+<h2>Solicitar Turno</h2>
+
+<form asp-action="Solicitar" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Datos del Paciente</h4>
+            <div class="form-group">
+                <label asp-for="Nombre" class="control-label"></label>
+                <input asp-for="Nombre" class="form-control" />
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellido" class="control-label"></label>
+                <input asp-for="Apellido" class="form-control" />
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DNI" class="control-label"></label>
+                <input asp-for="DNI" class="form-control" />
+                <span asp-validation-for="DNI" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Telefono" class="control-label"></label>
+                <input asp-for="Telefono" class="form-control" />
+                <span asp-validation-for="Telefono" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <h4>Datos del Turno</h4>
+            <div class="form-group">
+                <label asp-for="Id_Profesional" class="control-label">Profesional</label>
+                <select asp-for="Id_Profesional" class="form-control"
+                        asp-items="@(new SelectList(ViewBag.Profesionales, "Id_Profesional", "Nombre"))">
+                    <option value="">-- Seleccionar --</option>
+                </select>
+                <span asp-validation-for="Id_Profesional" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Fecha_Hora" class="control-label"></label>
+                <input asp-for="Fecha_Hora" type="datetime-local" class="form-control" />
+                <span asp-validation-for="Fecha_Hora" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Motivo_Consulta" class="control-label"></label>
+                <textarea asp-for="Motivo_Consulta" class="form-control"></textarea>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group mt-3">
+        <button type="submit" class="btn btn-primary">Solicitar Turno</button>
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

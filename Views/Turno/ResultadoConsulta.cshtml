@@ -1,0 +1,44 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model List<SaludTotalWeb.Models.Turno>
+
+@{
+    ViewData["Title"] = "Resultado de Consulta";
+}
+
+<h2>Turnos del Paciente</h2>
+
+@if (!Model.Any())
+{
+    <p>No se encontraron turnos registrados.</p>
+}
+else
+{
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Profesional</th>
+                <th>Especialidad</th>
+                <th>Estado</th>
+                <th>Motivo</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var turno in Model)
+            {
+                <tr>
+                    <td>@turno.Fecha_Hora.ToString("dd/MM/yyyy HH:mm")</td>
+                    <td>@turno.Profesional.Nombre @turno.Profesional.Apellido</td>
+                    <td>@turno.Profesional.Especialidad.Nombre</td>
+                    <td><strong>@turno.Estado</strong></td>
+                    <td>@turno.Motivo_Consulta</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+<a href="/" class="btn btn-secondary mt-3">Volver al inicio</a>

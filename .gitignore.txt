@@ -1,0 +1,17 @@
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.dbmdl
+*.log
+*.vspscc
+*.vssscc
+*.swp
+*.tmp
+*.bak
+*.ncb
+*.DS_Store
+Thumbs.db
+.env
