@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestión de Pacientes - Salud Total</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <h2>Gestión de Pacientes de Salud Total</h2>
+
+  <div>
+    <label for="filtroEstado">Filtrar por estado:</label>
+    <select id="filtroEstado">
+      <option value="todos">Todos</option>
+      <option value="activos">Activos</option>
+      <option value="inactivos">Inactivos</option>
+    </select>
+    <button onclick="cargarPacientes()">Aplicar Filtro</button>
+  </div>
+
+  <br>
+
+  <button onclick="mostrarFormularioPaciente()">➕ Agregar Paciente</button>
+
+  <br><br>
+
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Dirección</th>
+        <th>Fecha_nacimiento</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaPacientes">
+      <!-- Aquí se cargan los pacientes dinámicamente -->
+    </tbody>
+  </table>
+
+  <!-- Formulario para nuevo paciente -->
+  <div id="formularioPaciente" style="display:none; margin-top: 20px;">
+    <h3>Agregar Nuevo Paciente</h3>
+    <form id="formNuevoPaciente">
+      <input type="text" id="dni" placeholder="DNI" required><br>
+      <input type="text" id="nombre" placeholder="Nombre" required><br>
+      <input type="text" id="apellido" placeholder="Apellido" required><br>
+      <input type="email" id="email" placeholder="Email" required><br>
+      <input type="text" id="telefono" placeholder="Teléfono" required><br>
+      <input type="text" id="direccion" placeholder="Direccio "><br>
+      <input type="date" id="fecha_Nacimiento" placeholder="Fecha de Nacimiento" required><br>
+      <select id="sexo" required>
+        <option value="">Seleccione sexo</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Otro">Otro</option>
+        </select><br>
+      <label><input type="checkbox" id="activo" checked> Activo</label><br><br>
+      <button type="submit">✅ Guardar</button>
+      <button type="button" onclick="cancelarFormularioPaciente()">❌ Cancelar</button>
+    </form>
+  </div>
+
+  <script src="./js/pacientes.js"></script>
+  <script>
+  // 🔁 Forzar ejecución después de insertar el HTML dinámicamente
+  setTimeout(() => {
+    if (typeof cargarPacientes === 'function') cargarPacientes();
+    if (typeof cargarProfesionales === 'function') cargarProfesionales();
+    if (typeof cargarEspecialidades === 'function') cargarEspecialidades();
+  }, 200); // le damos un poco de delay por seguridad
+</script>
+</body>
+</html>
+

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Especialidades</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <h2>Especialidades y Profesionales</h2>
+
+  <div id="contenedorEspecialidades">
+    <!-- Especialidades con profesionales se cargan acá -->
+  </div>
+
+  <script src="./js/especialidades.js"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      if (typeof initEspecialidades === "function") {
+        initEspecialidades();
+      }
+    });
+  </script>
+</body>
+</html>

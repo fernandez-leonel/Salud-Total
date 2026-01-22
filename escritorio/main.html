@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Panel - Salud Total</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <div class="container">
+    <aside class="sidebar">
+      <h2>Salud Total</h2>
+      <p id="userRol"></p>
+      <nav>
+        <ul>
+          <li id="menuPacientes"><a href="#" onclick="cargarVista('pacientes')">Pacientes</a></li>
+          <li id="menuTurnos"><a href="#" onclick="cargarVista('turnos')">Turnos</a></li>
+          <li id="menuProfesionales"><a href="#" onclick="cargarVista('profesionales')">Profesionales</a></li>
+          <li id="menuEspecialidades"><a href="#" onclick="cargarVista('especialidades')">Especialidades</a></li>
+          <li id="menuInformes"><a href="#" onclick="cargarVista('informes')">Informes</a></li>
+          <li><a href="#" onclick="cerrarSesion()">Cerrar sesión</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="contenido">
+      <h1 id="titulo">Bienvenido</h1>
+      <div id="contenidoDinamico">
+        <p>Seleccioná una opción del menú lateral.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const username = localStorage.getItem('username');
+      const rol = localStorage.getItem('rol');
+
+      document.getElementById('userRol').textContent = `Rol: ${rol}`;
+      document.getElementById('titulo').textContent = `Bienvenido ${username}`;
+
+      // Ocultar opciones según el rol
+      if (rol === 'medico') {
+        document.getElementById('menuProfesionales').style.display = 'none';
+        document.getElementById('menuEspecialidades').style.display = 'none';
+        // El resto (turnos, informes) sí se muestra
+      }
+    });
+  </script>
+</body>
+</html>
+

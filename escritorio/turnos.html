@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestión de Turnos</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body>
+  <h2>Gestión de Turnos - Salud Total</h2>
+
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>Paciente</th>
+        <th>Profesional</th>
+        <th>Especialidad</th>
+        <th>Fecha y Hora</th>
+        <th>Estado</th>
+        <th>Motivo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaTurnos">
+      <!-- Turnos cargados aquí -->
+    </tbody>
+  </table>
+
+  <!-- 🔁 FORMULARIO REPROGRAMAR TURNO -->
+<div id="formReprogramar" style="display:none; margin-top: 20px;">
+  <h3>Reprogramar Turno</h3>
+  <input type="hidden" id="idTurnoReprogramar">
+  <label>Nueva fecha y hora (YYYY-MM-DDTHH:mm):</label>
+  <input type="datetime-local" id="nuevaFechaInput">
+  <button onclick="confirmarReprogramacion()">Confirmar</button>
+  <button onclick="cancelarReprogramacion()">Cancelar</button>
+</div>
+
+<!-- ❌ FORMULARIO CANCELAR TURNO -->
+<div id="formCancelar" style="display:none; margin-top: 20px;">
+  <h3>Cancelar Turno</h3>
+  <input type="hidden" id="idTurnoCancelar">
+  <label>Motivo de cancelación:</label>
+  <input type="text" id="motivoCancelacion" placeholder="Ej: No puede asistir">
+  <button onclick="confirmarCancelacion()">Confirmar</button>
+  <button onclick="cancelarFormularioCancelar()">Cancelar</button>
+</div>
+
+<!-- ✅ FORMULARIO NUEVO TURNO -->
+<div id="formNuevoTurno" style="display:none; margin-top: 30px;">
+  <h3>Nuevo Turno</h3>
+  <form onsubmit="crearTurno(event)">
+    <label>ID Paciente:</label>
+    <input type="number" id="idPaciente" required><br>
+
+    <label>ID Profesional:</label>
+    <input type="number" id="idProfesional" required><br>
+
+    <label>Fecha y Hora:</label>
+    <input type="datetime-local" id="fechaHoraTurno" required><br>
+
+    <label>Motivo de consulta:</label>
+    <input type="text" id="motivoConsulta" required><br><br>
+
+    <button type="submit">Guardar Turno</button>
+    <button type="button" onclick="ocultarFormularioNuevoTurno()">Cancelar</button>
+  </form>
+</div>
+
+<!-- BOTÓN PARA MOSTRAR FORM NUEVO TURNO -->
+<button style="margin-top: 20px;" onclick="mostrarFormularioNuevoTurno()">➕ Agregar Turno</button>
+

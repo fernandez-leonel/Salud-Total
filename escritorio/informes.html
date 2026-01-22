@@ -1,0 +1,24 @@
+<!-- informes.html -->
+<h2>📊 Informes de Gestión</h2>
+
+<div>
+  <label for="fechaDesde">Desde:</label>
+  <input type="date" id="fechaDesde" />
+
+  <label for="fechaHasta">Hasta:</label>
+  <input type="date" id="fechaHasta" />
+
+  <label for="tipoInforme">Informe:</label>
+  <select id="tipoInforme">
+    <option value="atendidos">Turnos atendidos por profesional</option>
+    <option value="cancelados">Turnos cancelados y reprogramados</option>
+    <option value="especialidades">Turnos por especialidad</option>
+    <option value="topPacientes">Top pacientes con más turnos</option>
+  </select>
+
+  <button onclick="consultarInforme()">📥 Consultar</button>
+</div>
+<hr />
+<div id="resultadoInforme" style="margin-top: 20px;"></div>
+  <!-- Acá se mostrará el resultado -->
+</div>

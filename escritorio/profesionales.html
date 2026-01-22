@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gestión de Profesionales</title>
+  <link rel="stylesheet" href="css/estilos.css" />
+</head>
+<body onload="initProfesionales()">
+  <h2>Gestión de Profesionales - Salud Total</h2>
+
+  <button onclick="mostrarFormularioProfesional()">➕ Agregar Profesional</button>
+  <br><br>
+
+  <table border="1" cellpadding="5">
+    <thead>
+      <tr>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Matrícula</th>
+        <th>Email</th>
+        <th>Teléfono</th>
+        <th>Especialidad</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody id="tablaProfesionales">
+      <!-- Profesionales cargados -->
+    </tbody>
+  </table>
+
+  <div id="formularioProfesional" style="display:none; margin-top: 20px;">
+    <h3>Agregar/Editar Profesional</h3>
+    <form id="formNuevoProfesional">
+      <input type="text" id="dni" placeholder="DNI" required><br>
+      <input type="text" id="nombre" placeholder="Nombre" required><br>
+      <input type="text" id="apellido" placeholder="Apellido" required><br>
+      <input type="text" id="matricula" placeholder="Matrícula" required><br>
+      <input type="email" id="email" placeholder="Email" required><br>
+      <input type="text" id="telefono" placeholder="Teléfono" required><br>
+      <input type="text" id="direccion" placeholder="Dirección"><br>
+      <input type="date" id="fechaNacimiento" placeholder="Fecha de Nacimiento"><br>
+      <select id="sexo">
+        <option value="">Seleccione sexo</option>
+        <option value="Masculino">Masculino</option>
+        <option value="Femenino">Femenino</option>
+        <option value="Otro">Otro</option>
+      </select><br>
+      <label><input type="checkbox" id="disponibilidad"> Disponible</label><br>
+      <select id="especialidadId" required>
+        <option value="">Seleccione especialidad</option>
+      </select><br><br>
+      <button type="submit">✅ Guardar</button>
+      <button type="button" onclick="cancelarFormularioProfesional()">❌ Cancelar</button>
+    </form>
+  </div>
+
+  <script src="./js/profesionales.js"></script>
+</body>
+</html>
